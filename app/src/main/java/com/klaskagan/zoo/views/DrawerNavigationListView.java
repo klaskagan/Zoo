@@ -32,6 +32,7 @@ public class DrawerNavigationListView extends ListView implements AdapterView.On
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText( getContext(), "Section Clicked: " + parent.getItemAtPosition( position ), Toast.LENGTH_SHORT ).show();
+        Toast.makeText( getContext(), "Section Clicked: " + parent.getItemAtPosition( position ), Toast.LENGTH_SHORT)
+                .show();
     }
 }

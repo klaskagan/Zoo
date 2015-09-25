@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Zoologijos sodas</string>
+    <string name="action_settings">Nustatymai</string>
+    <string name="drawer_closed">Zoologijos sodas</string>
+    <string name="drawer_opened">Pasirinkite</string>
+    <string name="hello_world">Labas, Pasauli</string>
+</resources>
