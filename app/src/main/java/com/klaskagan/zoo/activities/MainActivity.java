@@ -8,15 +8,24 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 import com.klaskagan.zoo.R;
+import com.klaskagan.zoo.events.DrawerSectionItemClickedEvent;
+import com.klaskagan.zoo.fragments.ExhibitsListFragment;
+import com.klaskagan.zoo.fragments.GalleryFragment;
+import com.klaskagan.zoo.fragments.ZooMapFragment;
+import com.klaskagan.zoo.utils.EventBus;
+import com.squareup.otto.Subscribe;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
+    private String mCurrentFragmentTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +63,31 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
+
+        displayInitialFragment();
+    }
+
+    private void displayInitialFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, ExhibitsListFragment.getInstance()).commit();
+        mCurrentFragmentTitle = ExhibitsListFragment.NAME;
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mActionBarDrawerToggle.syncState();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getInstance().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getInstance().unregister(this);
     }
 
     @Override
@@ -92,5 +120,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Subscribe
+    public void onDrawerSectionItemClickedEvent(DrawerSectionItemClickedEvent event) {
+        mDrawerLayout.closeDrawers();
+        if (event == null || TextUtils.isEmpty(event.getSection()) || event.getSection().equalsIgnoreCase
+                (mCurrentFragmentTitle)) {
+            return;
+        }
+        Toast.makeText(this, "Main Activity: section clicked: " + event.getSection(), Toast.LENGTH_SHORT).show();
+
+        if (event.getSection().equalsIgnoreCase("maps")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, ZooMapFragment.getInstance()).commit();
+        } else if (event.getSection().equalsIgnoreCase("gallery")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, GalleryFragment.getInstance()).commit();
+        } else if (event.getSection().equalsIgnoreCase("exhibits")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, ExhibitsListFragment.getInstance()).commit();
+        } else {
+            return;
+        }
+        mCurrentFragmentTitle = event.getSection();
+
     }
 }

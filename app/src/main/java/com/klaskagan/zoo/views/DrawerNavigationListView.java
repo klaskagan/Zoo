@@ -5,8 +5,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 import com.klaskagan.zoo.adapters.DrawerNavigationListAdapter;
+import com.klaskagan.zoo.events.DrawerSectionItemClickedEvent;
+import com.klaskagan.zoo.utils.EventBus;
 
 public class DrawerNavigationListView extends ListView implements AdapterView.OnItemClickListener {
     public DrawerNavigationListView(Context context) {
@@ -32,7 +33,6 @@ public class DrawerNavigationListView extends ListView implements AdapterView.On
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText( getContext(), "Section Clicked: " + parent.getItemAtPosition( position ), Toast.LENGTH_SHORT)
-                .show();
+        EventBus.getInstance().post(new DrawerSectionItemClickedEvent((String) parent.getItemAtPosition(position)));
     }
 }
