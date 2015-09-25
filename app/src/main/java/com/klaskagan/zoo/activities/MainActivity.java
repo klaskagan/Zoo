@@ -1,4 +1,4 @@
-package klaskagan.com.zoo;
+package com.klaskagan.zoo.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.klaskagan.zoo.R;
 
 public class MainActivity extends AppCompatActivity {
 

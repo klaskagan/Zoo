@@ -1,4 +1,4 @@
-package klaskagan.com.zoo;
+package com.klaskagan.zoo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

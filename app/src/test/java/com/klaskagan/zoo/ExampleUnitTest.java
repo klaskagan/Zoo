@@ -1,4 +1,4 @@
-package klaskagan.com.zoo;
+package com.klaskagan.zoo;
 
 import org.junit.Test;
 

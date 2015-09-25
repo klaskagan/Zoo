@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:minHeight="?android:attr/actionBarSize"/>
+        android:minHeight="?android:attr/actionBarSize" />
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
@@ -18,15 +18,17 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:text="@string/hello_world"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!" />
+            android:layout_height="wrap_content" />
 
-        <ListView
+        <com.klaskagan.zoo.views.DrawerNavigationListView
             android:id="@+id/drawer"
             android:layout_width="240dp"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
-            android:layout_gravity="start"/>
+            android:layout_gravity="start"
+            android:background="@android:color/white"/>
+
     </android.support.v4.widget.DrawerLayout>
+
 </LinearLayout>
