@@ -9,4 +9,7 @@
     <string name="exhibits_feed" translatable="false">
         https://gist.githubusercontent.com/klaskagan/f8bc65a315829bc2bcab/raw/f436990baf3b7de3c19e8937d0ecf0315e1c4e22
     </string>
+    <string name="gallery_feed" translatable="false">
+        https://gist.githubusercontent.com/klaskagan/21f4161bf48cd6242cf2/raw/ef8404f520228570769c63adc266eb40b51eb1ce
+    </string>
 </resources>
