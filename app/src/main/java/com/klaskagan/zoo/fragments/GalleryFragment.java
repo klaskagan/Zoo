@@ -1,13 +1,16 @@
 package com.klaskagan.zoo.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import com.klaskagan.zoo.R;
+import com.klaskagan.zoo.activities.GalleryDetailsActivity;
 import com.klaskagan.zoo.adapters.GalleryImageAdapter;
 import com.klaskagan.zoo.models.GalleryImage;
 import com.klaskagan.zoo.utils.GalleryApiInterface;
@@ -22,7 +25,7 @@ import java.util.List;
  * @author Viktoras Baracevicius
  * @since 2015/09/25.
  */
-public class GalleryFragment extends Fragment {
+public class GalleryFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private GridView mGridView;
     private GalleryImageAdapter mAdapter;
@@ -68,5 +71,20 @@ public class GalleryFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mGridView = (GridView) view.findViewById(R.id.grid);
+        mGridView.setOnItemClickListener(this);
+
+        // set visual feedback when we click on image thumbnails
+        mGridView.setDrawSelectorOnTop(true);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        GalleryImage image = (GalleryImage) parent.getItemAtPosition(position);
+        Intent intent = new Intent(getActivity(), GalleryDetailsActivity.class);
+        intent.putExtra(GalleryDetailsActivity.EXTRA_IMAGE, image.getImage());
+        intent.putExtra(GalleryDetailsActivity.EXTRA_CAPTION, image.getCaption());
+
+        // this will start GalleryDetailsActivity when we click on thumbnails
+        startActivity(intent);
     }
 }
