@@ -1,6 +1,8 @@
 package com.klaskagan.zoo.fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -36,6 +38,11 @@ public class ExhibitsListFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
 
         setListShown(false);
+
+        //styles can be applied also in java code
+        getListView().setDivider(new ColorDrawable(Color.TRANSPARENT));
+        getListView().setDividerHeight(16);
+
         mAdapter = new ExhibitsAdapter(getActivity(), 0);
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(getString(R.string.exhibits_feed)).build();
 
