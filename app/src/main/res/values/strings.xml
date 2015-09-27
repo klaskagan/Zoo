@@ -6,6 +6,7 @@
     <string name="drawer_opened">Select an item</string>
     <string name="drawer_closed">Zoo</string>
 
+
     <string name="exhibits_feed" translatable="false">
         https://gist.githubusercontent.com/klaskagan/f8bc65a315829bc2bcab/raw/f436990baf3b7de3c19e8937d0ecf0315e1c4e22
     </string>
@@ -15,4 +16,7 @@
     <string name="pins_feed" translatable="false">
         https://gist.githubusercontent.com/klaskagan/3f4deddd69e8e4c742c5/raw/dfcc826811de4ce7a6756256f63b8d44d6420e34
     </string>
+
+    <!-- Map -->
+    <string name="zoo">Zoo</string>
 </resources>
