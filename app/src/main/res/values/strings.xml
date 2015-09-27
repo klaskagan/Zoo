@@ -12,4 +12,7 @@
     <string name="gallery_feed" translatable="false">
         https://gist.githubusercontent.com/klaskagan/21f4161bf48cd6242cf2/raw/ef8404f520228570769c63adc266eb40b51eb1ce
     </string>
+    <string name="pins_feed" translatable="false">
+        https://gist.githubusercontent.com/klaskagan/3f4deddd69e8e4c742c5/raw/dfcc826811de4ce7a6756256f63b8d44d6420e34
+    </string>
 </resources>
