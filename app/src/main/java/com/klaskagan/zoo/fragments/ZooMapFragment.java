@@ -65,6 +65,9 @@ public class ZooMapFragment extends SupportMapFragment implements OnMapReadyCall
         pinsApiInterface.getStreams(new Callback<List<Pin>>() {
             @Override
             public void success(List<Pin> pins, Response response) {
+                if (!isAdded() || pins == null || pins.isEmpty()) {
+                    return;
+                }
                 for (Pin pin : pins) {
                     MarkerOptions options = new MarkerOptions().position(new LatLng(Double.valueOf(pin.getLatitude()), Double.valueOf(pin.getLongitude())));
                     options.title(pin.getName());

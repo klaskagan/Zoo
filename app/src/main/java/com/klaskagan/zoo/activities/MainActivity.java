@@ -2,8 +2,6 @@ package com.klaskagan.zoo.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -59,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayInitialFragment() {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, ExhibitsListFragment.getInstance()).commit();
-        mCurrentFragmentTitle = ExhibitsListFragment.NAME;
+        mCurrentFragmentTitle = getString(R.string.section_exhibits);
     }
 
     @Override
@@ -121,11 +119,11 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(this, "Main Activity: section clicked: " + event.getSection(), Toast.LENGTH_SHORT).show();
 
-        if (event.getSection().equalsIgnoreCase("maps")) {
+        if (event.getSection().equalsIgnoreCase(getString(R.string.section_map))) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, ZooMapFragment.getInstance()).commit();
-        } else if (event.getSection().equalsIgnoreCase("gallery")) {
+        } else if (event.getSection().equalsIgnoreCase(getString(R.string.section_gallery))) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, GalleryFragment.getInstance()).commit();
-        } else if (event.getSection().equalsIgnoreCase("exhibits")) {
+        } else if (event.getSection().equalsIgnoreCase(getString(R.string.section_exhibits))) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, ExhibitsListFragment.getInstance()).commit();
         } else {
             return;

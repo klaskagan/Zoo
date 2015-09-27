@@ -25,7 +25,6 @@ import java.util.List;
 public class ExhibitsListFragment extends ListFragment {
 
     private ExhibitsAdapter mAdapter;
-    public static final String NAME = "Exhibits";
 
     public static ExhibitsListFragment getInstance() {
         ExhibitsListFragment instance = new ExhibitsListFragment();
@@ -44,7 +43,7 @@ public class ExhibitsListFragment extends ListFragment {
         animalApiInterface.getStreams(new Callback<List<Animal>>() {
             @Override
             public void success(List<Animal> animals, Response response) {
-                if (animals == null || animals.isEmpty()) {
+                if (animals == null || animals.isEmpty() || !isAdded()) {
                     return;
                 }
                 mAdapter.addAll(animals);

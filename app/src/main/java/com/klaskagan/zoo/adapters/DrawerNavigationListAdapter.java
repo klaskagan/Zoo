@@ -21,11 +21,11 @@ public class DrawerNavigationListAdapter extends ArrayAdapter<String> {
             holder = new ViewHolder();
             convertView = LayoutInflater.from( getContext() ).inflate( R.layout.navigation_drawer_list_item, parent, false );
             convertView.setTag( holder );
+            holder.title = (TextView) convertView.findViewById( R.id.title );
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.title = (TextView) convertView.findViewById( R.id.title );
         holder.title.setText( getItem( position ) );
 
         return convertView;
